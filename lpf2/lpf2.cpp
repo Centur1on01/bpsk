@@ -199,6 +199,7 @@ int main()
     double snr_t = 0;
     ofstream output("theoretical_output.txt");
 
+    // теоретичская кривая помехоустойчивости
     while (snr_t <= 15) { // цикл по значениям snr от 0 до 15 дБ
         double ber = 0.5 * erfc(sqrt(pow(10, snr_t / 10))); // вычисление вероятности ошибки бита
         output << snr_t << "\t" << ber << endl; // запись значения snr и ber в файл
@@ -217,6 +218,7 @@ int main()
     ofstream outputp("outputp.txt"); 
 
     complex<double> jjj = { 1.0, 1.0 };
+    // кривая помехоустойчивости для ФМ-2 с ОСШ от 0 до 15 дБ
     while (snr <= 15) { // цикл по значениям snr от 0 до 15 дБ
         int N = 100000; // количество передаваемых символов
         int errors = 0; // количество ошибок декодирования
@@ -242,7 +244,7 @@ int main()
 
 
 
-
+    // старая реализация вычисления кривой помехоустойчивости и теоретических значений
     double Nbit = 1000;
     complex<double> tempbit;
     for (int i = 0; i < Nbit; i++) {
